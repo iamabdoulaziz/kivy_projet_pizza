@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.properties import ObjectProperty, StringProperty, NumericProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 
 from models import Pizza
@@ -7,6 +7,9 @@ from models import Pizza
 
 class PizzaWidget(BoxLayout):
     name = StringProperty()
+    ingredients = StringProperty()
+    price = NumericProperty()
+    vegetarian = BooleanProperty()
 
 class MainWidget(BoxLayout):
     recycleView = ObjectProperty(None)
@@ -21,10 +24,8 @@ class MainWidget(BoxLayout):
         ]
 
     def on_parent(self, widget, parent):
-        self.recycleView.data = [
-            {"name": "4 fromages"},
-            {"name": "Chorizo"}
-        ]
+        pizza_list = [pizza.get_dictionary() for pizza in self.pizzas]
+        self.recycleView.data = pizza_list
 
 
 class PizzaApp(App):
