@@ -21,7 +21,6 @@ MainWidget:
     text_size: self.size
     halign: "left"
     valign: "center"
-
     canvas.before:
         Color:
             # rgb: utils.get_random_color()
@@ -60,12 +59,9 @@ MainWidget:
         LeftAlignLabel:
             text: root.ingredients
             color: utils.get_color_from_hex(color2)
-    Label:
+    FitLabel:
         text: str(root.price) + "euros"
-        text_size: self.size
         font_size: dp(20)
         color: utils.get_color_from_hex(color1)
         #### dd7835
-        halign: "right"
-        valign: "center"
 
