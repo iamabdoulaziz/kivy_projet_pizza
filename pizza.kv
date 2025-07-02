@@ -1,4 +1,6 @@
 #:import utils kivy.utils
+#: set color1 "#dd7835"
+#: set color2 "#c8c8c8"
 
 MainWidget:
 
@@ -13,6 +15,7 @@ MainWidget:
             size_hint_y: None
             height: self.minimum_height
             orientation: 'vertical'
+            spacing: dp(16)
 
 <LeftAlignLabel@Label>:
     text_size: self.size
@@ -21,7 +24,8 @@ MainWidget:
 
     canvas.before:
         Color:
-            rgb: utils.get_random_color()
+            # rgb: utils.get_random_color()
+            rgba: 0, 0, 0, 0
         Rectangle:
             pos: self.pos
             size: self.size
@@ -49,13 +53,19 @@ MainWidget:
             spacing: dp(10)
             FitLabel:
                 text: root.name
+                font_size: dp(22)
+                bold: True
             Badge:
                 text: "VEGETARIENNE" if root.vegetarian else ""
         LeftAlignLabel:
             text: root.ingredients
+            color: utils.get_color_from_hex(color2)
     Label:
         text: str(root.price) + "euros"
         text_size: self.size
+        font_size: dp(20)
+        color: utils.get_color_from_hex(color1)
+        #### dd7835
         halign: "right"
         valign: "center"
 
