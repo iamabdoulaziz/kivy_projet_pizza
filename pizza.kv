@@ -13,11 +13,15 @@ MainWidget:
             orientation: 'vertical'
 
 <PizzaWidget>:
-    Label:
-        text: root.name
-    Label:
-        text: root.ingredients
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            Label:
+                text: root.name
+            Label:
+                text: "VEGETARIENNE" if root.vegetarian else ""
+        Label:
+            text: root.ingredients
     Label:
         text: str(root.price) + "euros"
-    Label:
-        text: str(root.vegetarian)
+
