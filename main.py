@@ -1,7 +1,9 @@
 from kivy.app import App
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
-
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.widget import Widget
+from kivy.uix.behaviors import CoverBehavior
 from models import Pizza
 
 
@@ -11,7 +13,7 @@ class PizzaWidget(BoxLayout):
     price = NumericProperty()
     vegetarian = BooleanProperty()
 
-class MainWidget(BoxLayout):
+class MainWidget(FloatLayout):
     recycleView = ObjectProperty(None)
 
     def __init__(self, **kwargs):

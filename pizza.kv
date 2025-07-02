@@ -4,8 +4,13 @@
 
 MainWidget:
 
+<CoverImage@CoverBehavior+Image>:
+    reference_size: self.texture_size
+
 <MainWidget>:
     recycleView: recycleView
+    CoverImage:
+        source: "images/menu_background.jpg"
     RecycleView:
         id: recycleView
         viewclass: 'PizzaWidget'
@@ -64,4 +69,3 @@ MainWidget:
         font_size: dp(20)
         color: utils.get_color_from_hex(color1)
         #### dd7835
-
