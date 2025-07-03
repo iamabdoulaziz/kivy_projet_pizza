@@ -7,20 +7,50 @@ MainWidget:
 <CoverImage@CoverBehavior+Image>:
     reference_size: self.texture_size
 
+<TitleLabel@FitLabel>:
+    font_size: dp(22)
+    bold: True
+    padding: dp(16), dp(3)
+    canvas.before:
+        Color:
+            rgb: utils.get_color_from_hex(color1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <MainWidget>:
     recycleView: recycleView
     CoverImage:
+        canvas:
+            Color:
+                rgba: 0, 0, 0, .6
+            Rectangle:
+                pos: self.pos
+                size: self.size
         source: "images/menu_background.jpg"
-    RecycleView:
-        id: recycleView
-        viewclass: 'PizzaWidget'
-        RecycleBoxLayout:
-            default_size: None, dp(56)
-            default_size_hint: 1, None
-            size_hint_y: None
-            height: self.minimum_height
-            orientation: 'vertical'
-            spacing: dp(16)
+    BoxLayout:
+        orientation: "vertical"
+        Image:
+            source: "images/small_logo.png"
+            size_hint: None, None
+            size: dp(150), dp(60)
+            allow_stretch: True
+            pos_hint: {"center_x": .5}
+        TitleLabel:
+            text: "Les pizzas"
+        BoxLayout:
+            padding: dp(20), dp(20)
+            RecycleView:
+                id: recycleView
+                viewclass: 'PizzaWidget'
+                RecycleBoxLayout:
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    spacing: dp(16)
+
 
 <LeftAlignLabel@Label>:
     text_size: self.size
@@ -38,6 +68,7 @@ MainWidget:
     size_hint: None, None
     size: self.texture_size
 
+
 <Badge@FitLabel>:
     color: 0, 0, 0, 1
     bold: True
@@ -52,6 +83,8 @@ MainWidget:
 
 <PizzaWidget>:
     BoxLayout:
+        size_hint_max_x: dp(300)
+        size_hint_min_x: dp(150)
         orientation: "vertical"
         BoxLayout:
             spacing: dp(10)
@@ -68,4 +101,4 @@ MainWidget:
         text: str(root.price) + "euros"
         font_size: dp(20)
         color: utils.get_color_from_hex(color1)
-        #### dd7835
+        pos_hint: {"top": .9}
