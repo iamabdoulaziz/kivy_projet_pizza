@@ -28,7 +28,7 @@ class MainWidget(FloatLayout):
 
         ]"""
 
-        HttpClient().get_pizzas(self.on_server_data)
+        HttpClient().get_pizzas(self.on_server_data, self.on_server_error)
 
     """def on_parent(self, widget, parent):
         pizza_list = [pizza.get_dictionary() for pizza in self.pizzas]
@@ -36,6 +36,8 @@ class MainWidget(FloatLayout):
     def on_server_data(self, pizzas_dict):
         self.recycleView.data = pizzas_dict
 
+    def on_server_error(self, error):
+        print(f"ERREUR: {error}")
 
 
 with open("pizzascr.kv", encoding= "utf8") as f:
