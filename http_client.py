@@ -5,7 +5,7 @@ from kivy.network.urlrequest import UrlRequest
 
 class HttpClient:
     def get_pizzas(self, on_complete, on_error):
-        url = "https://iamabdoulaziz.pythonanywhere.com/api/GetPizzass"
+        url = "https://iamabdoulaziz.pythonanywhere.com/api/GetPizzas"
 
         def data_received(req, result):
             data = json.loads(result)

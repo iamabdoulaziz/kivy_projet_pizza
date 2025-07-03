@@ -18,6 +18,7 @@ class PizzaWidget(BoxLayout):
 
 class MainWidget(FloatLayout):
     recycleView = ObjectProperty(None)
+    error_str = StringProperty("")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -38,6 +39,7 @@ class MainWidget(FloatLayout):
 
     def on_server_error(self, error):
         print(f"ERREUR: {error}")
+        self.error_str = "ERREUR: " + error
 
 
 with open("pizzascr.kv", encoding= "utf8") as f:

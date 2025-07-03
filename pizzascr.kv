@@ -50,7 +50,18 @@ MainWidget:
                     height: self.minimum_height
                     orientation: 'vertical'
                     spacing: dp(16)
-
+        Label:
+            text: root.error_str
+            size_hint: 1, None
+            height: dp(30) if len(root.error_str) > 0 else dp(0)
+            font_size: dp(12)
+            bold: True
+            canvas.before:
+                Color:
+                    rgb: 1, 0, 0
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
 
 <LeftAlignLabel@Label>:
     text_size: self.size
@@ -81,6 +92,7 @@ MainWidget:
             pos: self.pos
             size: self.size
 
+
 <PizzaWidget>:
     BoxLayout:
         size_hint_max_x: dp(300)
@@ -98,7 +110,8 @@ MainWidget:
             text: root.ingredients
             color: utils.get_color_from_hex(color2)
     FitLabel:
-        text: str(root.price) + "euros"
+        text: str(int(root.price)) + "FCFA"
         font_size: dp(20)
         color: utils.get_color_from_hex(color1)
         pos_hint: {"top": .9}
+
