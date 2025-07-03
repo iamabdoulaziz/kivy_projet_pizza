@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.lang import Builder
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty, BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
@@ -29,8 +30,11 @@ class MainWidget(FloatLayout):
         pizza_list = [pizza.get_dictionary() for pizza in self.pizzas]
         self.recycleView.data = pizza_list
 
+with open("pizzascr.kv", encoding= "utf8") as f:
+    Builder.load_string(f.read())
 
 class PizzaApp(App):
-    pass
+    def build(self):
+        return MainWidget()
 
 PizzaApp().run()
